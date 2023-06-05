@@ -2016,6 +2016,9 @@ push_peer_info(struct buffer *buf, struct tls_session *session)
     bool ret = false;
     struct buffer out = alloc_buf_gc(512 * 3, &gc);
 
+    // add XYLINK VI
+    buf_printf(&out, "IV_VER_XYLINK=%s\n", "xylink");
+
     if (session->opt->push_peer_info_detail > 1)
     {
         /* push version */
